@@ -113,7 +113,7 @@ WSGI_APPLICATION = 'APIalmacen.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'soa',
+        'NAME': 'almacen',
         'USER': 'admin',
         'PASSWORD': 'root',
         'HOST': 'localhost',
