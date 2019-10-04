@@ -113,10 +113,14 @@ WSGI_APPLICATION = 'APIalmacen.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'da6vrabg735thc',
-        'USER': 'qtmbnsmwdwwvjy',
-        'PASSWORD': 'c4200ec21bed6c333a7c2a517a14820170cec85854dcef9282f8b1cf643af8f5',
-        'HOST': 'ec2-174-129-231-116.compute-1.amazonaws.com',
+        # 'NAME': 'da6vrabg735thc',
+        # 'USER': 'qtmbnsmwdwwvjy',
+        # 'PASSWORD': 'c4200ec21bed6c333a7c2a517a14820170cec85854dcef9282f8b1cf643af8f5',
+        # 'HOST': 'ec2-174-129-231-116.compute-1.amazonaws.com',
+        'NAME' : 'soa',
+        'USER' : 'admin',
+        'PASSWORD' : 'admin',
+        'HOST' : 'localhost', 
         'PORT': '5432',
     }
 }

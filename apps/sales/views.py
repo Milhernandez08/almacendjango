@@ -55,7 +55,7 @@ class SalesList(APIView):
         newSale.save()
         ##########  UPDATE FOR PRODUCTS #############
         Inventory.objects.filter(pk=int(SALES['product'])).update(
-            quantity = op.residuo()
+            quantity = op.residuo( int(SALES['status']) )
         )        
         
         ##########  POST FOR TRANSACTIONS #############
@@ -99,24 +99,24 @@ class SalesDetail(APIView):
             searchIdSale = Sale.objects.get(pk=id) 
             serializerSale = SaleSerializers(searchIdSale)                     
             SALE = serializerSale.data            
-            ##########  UPDATE FOR status SALE #############
+            
             Sale.objects.filter(pk=id).update(
                 status = request.data['status']
             )
 
-            ##########  POST FOR TRANSACTIONS ############# 
+            
             searchIdProduct = Inventory.objects.get(product=int(SALE['product'])) 
             serializerInventory = InventorySerializers(searchIdProduct)                     
             INVENTORY = serializerInventory.data
                                         
             op = Operaciones(INVENTORY, SALE)            
             Inventory.objects.filter(pk=int(SALE['product'])).update(
-                quantity = op.residuo()
+                quantity = op.residuo( int ( request.data['status'] ) )
             )
 
-            ##########  POST FOR TRANSACTIONS #############
+            
             inventoryIdProductSale = INVENTORY['id']
-            print("ID inv sale: ", inventoryIdProductSale)
+            # print("ID inv sale: ", inventoryIdProductSale)
             idProduct = int(request.data['product'])
             searchIdProductInProducts = Product.objects.get(pk=idProduct) 
             serializerProduct= ProductSerializers(searchIdProductInProducts)                     
@@ -126,7 +126,7 @@ class SalesDetail(APIView):
                 inventory_id    = inventoryIdProductSale,
                 dates           = timezone.now(),
                 types           = 2,
-                quantity        = op.residuo(),
+                quantity        = op.residuo( int ( request.data['status'] ) ),
                 description     = "Se cancelo la venta del producto " + PRODUCT['name']
             )                                
         return Response("Success")

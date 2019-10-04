@@ -6,8 +6,8 @@ class Operaciones ():
         self.Inv = Inventory
         self.Sal = Sale
 
-    def residuo (self):
-        if int(self.Sal['status']) != 0:
+    def residuo (self, num):
+        if num != 0:
             return int(self.Inv['quantity']) - int(self.Sal['quantity'])
         else:
             return int(self.Inv['quantity']) + int(self.Sal['quantity'])
@@ -25,7 +25,7 @@ class Operaciones ():
 
     def res (self):
         resultado = []
-        resultado.append(self.residuo())
+        # resultado.append(self.residuo())
         resultado.append(self.subtotal())
         resultado.append(self.total())
         return resultado
