@@ -26,7 +26,7 @@ class SalesList(APIView):
 
 
     def post(self, request, format=None):        
-        #saleInventory = SaleSerializers(data = request.data)
+        
 
         print("Request ", request.data)
         productId = int(request.data['product'])
@@ -39,7 +39,7 @@ class SalesList(APIView):
         INVENTORY = serializerInventory.data
 
         print("Vlues inventory", INVENTORY)
-        ##########  POST FOR TRANSACTIONS #############                             
+                                  
         op = Operaciones(INVENTORY, SALES)
         print(op.total())        
         newSale = Sale.objects.create(
