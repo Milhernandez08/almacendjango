@@ -7,7 +7,7 @@ django-allauth==0.40.0
 django-cors-headers==3.1.1
 django-rest-auth==0.9.5
 django-seed==0.1.9
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 Faker==2.0.2
 gunicorn==19.9.0
 idna==2.8
